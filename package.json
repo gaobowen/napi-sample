@@ -1,0 +1,25 @@
+{
+  "name": "napi-sample",
+  "version": "1.0.0",
+  "description": "> N-API 作为Nodejs项目的一部分，旨在更加便捷稳定的创建Nodejs Native 插件。这个API作为应用二进制接口(ABI)，在Node.js的各个版本中都是稳定的，而且ABI允许一个在主要版本编译的模块，在以后的Node.js版本上运行，而无需重新编译。",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaobowen/napi-sample.git"
+  },
+  "keywords": [
+    "napi"
+  ],
+  "author": "gaobowen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gaobowen/napi-sample/issues"
+  },
+  "homepage": "https://github.com/gaobowen/napi-sample#readme",
+  "dependencies": {
+    "node-addon-api": "^4.2.0"
+  }
+}
