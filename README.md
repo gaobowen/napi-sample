@@ -1,7 +1,18 @@
 # Nodejs C++插件（N-API）
+
+- [0. 环境搭建](#abcd-0)
+- [1. JS中调用C++方法](#abcd-1)
+  - [1.1 JS中调用源文件的C++方法](#abcd-1-1)
+  - [1.2 JS中调用动态库的C++方法](#abcd-1-2)
+- [2. C++中调用JS方法](#abcd-2)
+  - [2.1. C++单线程调用JS方法](#abcd-2-1)
+  - [2.2. C++多线程调用JS方法](#abcd-2-2)
+
 > N-API 作为Nodejs项目的一部分，旨在更加便捷稳定的创建Nodejs Native 插件。这个API作为应用二进制接口(ABI)，在Node.js的各个版本中都是稳定的，而且ABI允许一个在主要版本编译的模块，在以后的Node.js版本上运行，而无需重新编译。
 
-## 环境搭建
+<span id='abcd-0'></span>
+
+## 0. 环境搭建
 1. 安装最新的npm，且Nodejs版本10.x以上
 2. 工具链
     - Windows执行 ```npm install --global windows-build-tools``` 
@@ -16,8 +27,13 @@
     ![](one.png)
     - ```c_cpp_properties.json``` includePath 中加入 ```C:\\Users\\gaobowen\\AppData\\Local\\node-gyp\\Cache\\10.16.0\\include\\node``` 
 
+<span id='abcd-1'></span>  
+
 ## 1. JS中调用C++方法
-### 1.1 JS中调用源文件中的C++方法
+
+<span id='abcd-1-1'></span>
+
+### 1.1 JS中调用源文件的C++方法
 1. 编写功能函数
 test.h、test.cc
 ```cpp
@@ -99,7 +115,9 @@ test export=> function () { [native code] }
 test call=> 2.5
 ```
 
-### 1.2 JS中调用动态库中的C++方法
+<span id='abcd-1-2'></span>
+
+### 1.2 JS中调用动态库的C++方法
 ```cpp
 Napi::Value call_dll(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
@@ -114,8 +132,13 @@ Napi::Value call_dll(const Napi::CallbackInfo& info) {
 }
 ```
 
+<span id='abcd-2'></span>
+
 ## 2. C++中调用JS方法
-### 2.1. C++主线程中调用JS方法
+
+<span id='abcd-2-1'></span>
+
+### 2.1. C++单线程调用JS方法
 test.cpp
 ```cpp
 Napi::Value cpp_call_js(const Napi::CallbackInfo& info) {
@@ -154,8 +177,9 @@ let { cpp_call_js } = require('./build/Release/napi_sample.node');
 
 })();
 ```
+<span id='abcd-2-2'></span>
 
-### 2.2. C++多线程中调用JS方法
+### 2.2. C++多线程调用JS方法
 test.cpp
 ```cpp
 Napi::ThreadSafeFunction tsfunc;
