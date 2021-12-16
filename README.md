@@ -40,6 +40,9 @@ test.h、test.cc
 #ifndef SAMPLE_TEST_H
 #define SAMPLE_TEST_H
 #include <napi.h>
+#include <Windows.h>
+#include <sstream>
+#include <thread>
 
 Napi::Value plus(const Napi::CallbackInfo& info);
 
