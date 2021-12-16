@@ -113,6 +113,7 @@ let { plus } = require('./build/Release/napi_sample.node');
 console.log('test export=>', plus);
 console.log('test call=>', plus(1.2, 1.3));
 ```
+控制台输出
 ```
 test export=> function () { [native code] }
 test call=> 2.5
@@ -134,6 +135,11 @@ Napi::Value call_dll(const Napi::CallbackInfo& info) {
     return Napi::Boolean::New(env, true);
 }
 ```
+控制台输出
+```
+test call_dll=> true
+```
+![](two.png)
 
 <span id='abcd-2'></span>
 
@@ -180,6 +186,11 @@ let { cpp_call_js } = require('./build/Release/napi_sample.node');
 
 })();
 ```
+控制台输出
+```
+test cpp_call_js=> 6
+```
+
 <span id='abcd-2-2'></span>
 
 ### 2.2. C++多线程调用JS方法
@@ -232,4 +243,10 @@ let { cpp_thread_call_js } = require('./build/Release/napi_sample.node');
     console.log('test cpp_thread_call_js=>', cpp_thread_call_js(js_callback_async));
 
 })();
+```
+控制台输出
+```
+test cpp_thread_call_js=> true
+thread_id 6768
+thread_id 12352
 ```
